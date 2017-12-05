@@ -6,17 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NSS Starter Kit</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
-<body ng-app="EmployeeApp">
 
-    <nav ng-controller="AuthCtrl">
-        <button ng-click="logoutUser()">Logout</button>
-    </nav>
+<!-- ng-app directs angular to use the "EmployeeApp" app, ng-cloak keeps raw html showing while scripts load -->
+<body ng-app="EmployeeApp" ng-cloak>
+
+    <!-- Header Nav is outside of ng-view to keep static -->
+    <nav ng-include="'app/navigation/partials/navigation.html'"></nav>
 
     <div ng-view></div>
+    <!-- Footer Nav is outside of ng-view to keep static -->
+    <nav ng-include="'app/navigation/partials/footer.html'"></nav>
 
 
-
+    <!-- Controller and Factory Scripts are loaded here... -->
     <script src="./lib/node_modules/firebase/firebase.js"></script>
     <script src="./lib/node_modules/angular/angular.min.js"></script>
     <script src="./lib/node_modules/angular-route/angular-route.min.js"></script>
@@ -25,6 +29,8 @@
 
     <script src="./app/auth/factories/AuthFactory.js"></script>
     <script src="./app/auth/controllers/AuthCtrl.js"></script>
+
+    <script src="./app/navigation/controllers/NavCtrl.js"></script>
 
     <script src="./app/employees/factories/EmployeeFactory.js"></script>
     <script src="./app/employees/controllers/EmployeeListCtrl.js"></script>
